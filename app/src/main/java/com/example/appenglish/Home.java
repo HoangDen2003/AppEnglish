@@ -40,9 +40,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private static final int FRAGMENT_TOEIC = 2;
     private static final int FRAGMENT_DASHBOARD = 3;
     private static final int FRAGMENT_PRACTICE = 4;
-    private static final int FRAGMENT_PROFILE = 5;
-    private static final int FRAGMENT_EDIT = 6;
-    private static final int FRAGMENT_SETTING = 7;
+    private static final int FRAGMENT_EDIT = 5;
+    private static final int FRAGMENT_SETTING = 6;
     private int mCurrentFargment = FRAGMENT_BASIC;
     private DrawerLayout drawerLayout;
     Toolbar toolbar;
@@ -114,11 +113,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             if(mCurrentFargment!= FRAGMENT_PRACTICE) {
                 replaceFragment(new PracticeFragment());
                 mCurrentFargment = FRAGMENT_PRACTICE;
-            }
-        } else if(id == R.id.nav_profile) {
-            if(mCurrentFargment != FRAGMENT_PROFILE) {
-                replaceFragment(new PracticeFragment());
-                mCurrentFargment = FRAGMENT_PROFILE;
             }
         } else if(id == R.id.nav_edit) {
             Intent i = new Intent(Home.this, EditAccountActivity.class);

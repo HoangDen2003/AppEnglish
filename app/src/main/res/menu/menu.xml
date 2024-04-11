@@ -19,9 +19,6 @@
     </group>
     <item android:title="@string/nav_account">
         <menu>
-            <item android:id="@+id/nav_profile"
-                android:title="@string/nav_profile"
-                android:icon="@drawable/card_solid"/>
             <item android:id="@+id/nav_edit"
                 android:title="@string/nav_editacc"
                 android:icon="@drawable/user_pen_solid"/>
