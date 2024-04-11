@@ -13,8 +13,7 @@
         android:layout_height="350dp"
         android:text="tmp"
         android:textSize="50dp"
-        android:gravity="center"
-        android:background="@drawable/shadow"/>
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/pages"

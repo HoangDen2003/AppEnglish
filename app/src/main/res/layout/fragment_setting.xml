@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    style="@style/SCREEN">
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,7 +12,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dark nigth"
-            style="@style/TEXT"
             android:textSize="18sp"
             android:gravity="center"
             android:layout_marginStart="10dp"
@@ -34,11 +32,9 @@
         android:layout_width="370sp"
         android:layout_height="wrap_content"
         android:text="CSKH"
-        style="@style/TEXT"
         android:textSize="18sp"
         android:layout_marginTop="40sp"
         android:layout_marginStart="10dp"
         android:padding="10dp"
         android:textStyle="bold"/>
-
 </FrameLayout>

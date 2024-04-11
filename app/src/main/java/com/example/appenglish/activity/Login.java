@@ -28,10 +28,10 @@ public class Login extends AppCompatActivity {
     ImageView btnGoogle;
     CreateDatabase dtb;
 
-//  after login, sharedPreferences = email
+    //  after login, sharedPreferences = email
     SharedPreferences sharedPreferences, sharedPreferencesUsername;
 
-//  sign in with Google
+    //  sign in with Google
     GoogleSignInOptions gso;
     GoogleSignInClient gsi;
     private static final int RC_SIGN_IN = 123;
@@ -80,28 +80,6 @@ public class Login extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu, menu);
-//
-//        MenuItem menuItem = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) menuItem.getActionView();
-//        searchView.setQueryHint("Type here to research");
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return false;
-//            }
-//        });
-//
-//        return true;
-//    }
 
     void setUp () {
         edtEmail = findViewById(R.id.edtEmail);
@@ -151,20 +129,6 @@ public class Login extends AppCompatActivity {
         startActivity(signInIntent);
     }
 
-//    @Override
-//    protected void onActivityResult (int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == RC_SIGN_IN) {
-//            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-//            if (result.isSuccess()) {
-//                finish();
-//                Toast.makeText(getApplicationContext(), "Successful!", Toast.LENGTH_SHORT).show();
-//                Intent i = new Intent(Login.this, DashboardActivity.class);
-//                startActivity(i);
-//            } else {
-//                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    }
+
 
 }

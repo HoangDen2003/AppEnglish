@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appenglish.Database.CreateDatabase;
 import com.example.appenglish.R;
 import com.example.appenglish.models.User;
-import com.example.appenglish.Database.CreateDatabase;
 
 public class Register extends AppCompatActivity {
     CreateDatabase dtb = new CreateDatabase(this);
@@ -57,22 +57,25 @@ public class Register extends AppCompatActivity {
         } else if(repass.isEmpty()) {
             edtRePass.setError("Vui lòng nhập dữ liệu vào trường này!");
         } else {
-            if(repass.equals(pass)) {
-                User user = new User();
-                user.setEmail(email);
-                user.setUsername(username);
-                user.setPassword(pass);
-                user.setRepass(repass);
+            boolean kiemtra = dtb.KTLogin(email, pass);
+            if(!kiemtra) {
+                if (repass.equals(pass)) {
+                    User user = new User();
+                    user.setEmail(email);
+                    user.setUsername(username);
+                    user.setPassword(pass);
+                    user.setRepass(repass);
+                    dtb.insertTK(user);
+                    Toast.makeText(getApplicationContext(), "Tạo tài khoản thành công!", Toast.LENGTH_SHORT).show();
 
-                dtb.insertTK(user);
+                    Intent intent = new Intent(Register.this, Login.class);
+                    startActivity(intent);
 
-                Toast.makeText(getApplicationContext(), "Tạo tài khoản thành công!", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(Register.this, Login.class);
-                startActivity(intent);
-
-            } else {
-                Toast.makeText(getApplicationContext(), "Mật khẩu chưa trùng khớp!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Mật khẩu chưa trùng khớp!", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(getApplicationContext(), "Email hoặc username đã tồn tại!", Toast.LENGTH_SHORT).show();
             }
         }
     }
