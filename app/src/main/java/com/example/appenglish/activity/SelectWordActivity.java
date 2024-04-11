@@ -39,6 +39,7 @@ public class SelectWordActivity extends AppCompatActivity {
     ArrayList<CardModel> subArWords = new ArrayList<>();
     Random random = new Random();
     ArrayList<Integer> set = new ArrayList<>();
+    private int index = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,13 +83,18 @@ public class SelectWordActivity extends AppCompatActivity {
         rvSelectWord.setLayoutManager(mLayoutManager);
 
 //      set ngau nhieu cho txtSw
-        int r = random.nextInt(arWords.size());
-        String w = setWordIndex.get(r).getTxtCard_1();
-        txtSw.setText(w);
+//        int r = random.nextInt(arWords.size());
+//        String w = setWordIndex.get(r).getTxtCard_1();
+//        txtSw.setText(w);
+
+//        String w = setWordIndex.get(index).getTxtCard_1();
+//        txtSw.setText(w);
 
 //      check trung
         updateSubArWords();
-        pages.setText(set.size() + "/" + arWords.size());
+//        pages.setText(set.size() + "/" + arWords.size());
+        pages.setText(index + "/" + arWords.size());
+
 
         // Tạo và thiết lập Adapter cho RecyclerView
         SelectWordAdapter selectWordAdapter = new SelectWordAdapter(subArWords, new SelectWordAdapter.OnItemClickListener() {
@@ -106,7 +112,8 @@ public class SelectWordActivity extends AppCompatActivity {
                     Toast.makeText(SelectWordActivity.this, "Incorrect !!", Toast.LENGTH_SHORT).show();
                 }
 
-                pages.setText(set.size() + "/" + arWords.size());
+//                pages.setText(set.size() + "/" + arWords.size());
+                pages.setText(index + "/" + arWords.size());
 
             }
         });
@@ -157,7 +164,7 @@ public class SelectWordActivity extends AppCompatActivity {
 
     public void updateSubArWords() {
 
-        int randomIndex;
+//        int randomIndex;
         String randomWord;
 
         subArWords.clear();
@@ -180,22 +187,22 @@ public class SelectWordActivity extends AppCompatActivity {
             rvSelectWord.getAdapter().notifyDataSetChanged();
         }
 
-        randomIndex = random.nextInt(setWordIndex.size());
-        randomWord = setWordIndex.get(randomIndex).getTxtCard_1();
-        txtSw.setText(randomWord);
+//        randomIndex = random.nextInt(setWordIndex.size());
+//        randomWord = setWordIndex.get(randomIndex).getTxtCard_1();
+//        txtSw.setText(randomWord);
 
 //        String s = txtSw.getText().toString();
 
-        if (set.size() != arWords.size()) {
-            while ((checkWord() == false) || (checkSet(randomIndex) == false)) {
-                randomIndex = random.nextInt(setWordIndex.size());
-                randomWord = setWordIndex.get(randomIndex).getTxtCard_1();
-                txtSw.setText(randomWord);
-            }
-            set.add(randomIndex);
-        } else {
-            showFullDialog();
-        }
+//        if (set.size() != arWords.size()) {
+//            while ((checkWord() == false) || (checkSet(randomIndex) == false)) {
+//                randomIndex = random.nextInt(setWordIndex.size());
+//                randomWord = setWordIndex.get(randomIndex).getTxtCard_1();
+//                txtSw.setText(randomWord);
+//            }
+//            set.add(randomIndex);
+//        } else {
+//            showFullDialog();
+//        }
 
 //        while ((checkWord() == false) || (checkSet(randomIndex) == false)) {
 //            randomIndex = random.nextInt(setWordIndex.size());
@@ -203,6 +210,30 @@ public class SelectWordActivity extends AppCompatActivity {
 //            txtSw.setText(randomWord);
 //        }
 //        set.add(randomIndex);
+
+        if (index != setWordIndex.size()) {
+            randomWord = setWordIndex.get(index).getTxtCard_1();
+            txtSw.setText(randomWord);
+
+            while (checkWord() == false) {
+                subArWords.clear();
+                Collections.shuffle(arWords);
+
+                for (CardModel cm: arWords) {
+                    subArWords.add(cm);
+                    if (subArWords.size() == 4) {
+                        break;
+                    }
+                }
+                if (rvSelectWord.getAdapter() != null) {
+                    rvSelectWord.getAdapter().notifyDataSetChanged();
+                }
+            }
+            index++;
+
+        } else {
+            showFullDialog();
+        }
 
     }
 
