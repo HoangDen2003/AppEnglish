@@ -110,17 +110,12 @@ public class DashBoardFragment extends Fragment {
                         cardModel.setTxtCard_2(valueDescription);
                         cardModel.setUser_email(userEmail);
 
-                        if ((!valueEditWord.isEmpty()) && (!valueDescription.isEmpty())) {
-                            Toast.makeText(getContext(), "Success !!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Success !!", Toast.LENGTH_SHORT).show();
 
 //                          insert database
-                            db.insertWord(cardModel);
-                            getInit(userEmail);
-                            dialog.dismiss();
-
-                        } else {
-                            Toast.makeText(getContext(), "Failed !!", Toast.LENGTH_SHORT).show();
-                        }
+                        db.insertWord(cardModel);
+                        getInit(userEmail);
+                        dialog.dismiss();
 
                     }
                 });
