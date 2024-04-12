@@ -32,6 +32,7 @@ public class RetrofitClient {
         DictionaryApi dictionaryApi = retrofit.create(DictionaryApi.class);
         Call<List<MeanModel>> call = dictionaryApi.getWord(word);
 
+//      async
         try {
             call.enqueue(new Callback<List<MeanModel>>() {
                 @Override
@@ -43,6 +44,7 @@ public class RetrofitClient {
                     listener.onFetchData(response.body().get(0), response.message());
                 }
 
+//              http error
                 @Override
                 public void onFailure(Call<List<MeanModel>> call, Throwable throwable) {
                     listener.onError("Request Error !!");

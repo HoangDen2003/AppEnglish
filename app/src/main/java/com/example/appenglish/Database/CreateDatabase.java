@@ -349,6 +349,7 @@ public class CreateDatabase extends SQLiteOpenHelper {
             return true;
         }
         return false;
+
     }
     //  get username
     public String getUsername(String email, String password) {

@@ -54,6 +54,7 @@ public class PracticeWordAdapter extends RecyclerView.Adapter<PracticeWordAdapte
 //                notifyItemRemoved(position);
 //                notifyItemRangeChanged(position, arWords.size());
 //                Toast.makeText(context, holder.btnCardWord.getText(), Toast.LENGTH_SHORT).show();
+
                 arRemove.add(position);
                 arRemoveStr.add(holder.btnCardWord.getText().toString());
 
